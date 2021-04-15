@@ -4,15 +4,16 @@ import { createContext, useState, useContext } from "react";
 
 export const ClimateContext = createContext();
 
-export default function useConsumeClimate() {
+export default function useClimate() {
   return useContext(ClimateContext);
 }
 
 export const ClimateProvider = (props) => {
   const [temp, setTemp] = useState(50);
+  const [humidity, setHumidity] = useState(40);
 
   return (
-    <ClimateContext.Provider value={{ temp, setTemp }}>
+    <ClimateContext.Provider value={{ temp, setTemp, humidity, setHumidity }}>
       {props.children}
     </ClimateContext.Provider>
   );
